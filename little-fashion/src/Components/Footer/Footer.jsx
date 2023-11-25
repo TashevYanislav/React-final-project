@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function Footer() {
   return (
     <footer className="site-footer">
@@ -5,7 +7,7 @@ export default function Footer() {
         <div className="row">
           <div className="col-lg-3 col-10 me-auto mb-4">
             <h4 className="text-white mb-3">
-              <a href="index.html">Little</a> Fashion
+              <Link to="/">Little</Link> Fashion
             </h4>
             <p className="copyright-text text-muted mt-lg-5 mb-4 mb-lg-0">
               Copyright © 2022 <strong>Little Fashion</strong>
@@ -13,38 +15,33 @@ export default function Footer() {
             <br />
             <p className="copyright-text">
               Designed by{" "}
-              <a href="https://www.tooplate.com/" target="_blank">
+              <Link to="https://www.tooplate.com/" target="_blank">
                 Tooplate
-              </a>
+              </Link>
             </p>
           </div>
           <div className="col-lg-5 col-8">
             <h5 className="text-white mb-3">Sitemap</h5>
             <ul className="footer-menu d-flex flex-wrap">
               <li className="footer-menu-item">
-                <a href="about.html" className="footer-menu-link">
+                <Link to="/story" className="footer-menu-link">
                   Story
-                </a>
+                </Link>
               </li>
               <li className="footer-menu-item">
-                <a href="#" className="footer-menu-link">
+                <Link to="/products" className="footer-menu-link">
                   Products
-                </a>
+                </Link>
               </li>
               <li className="footer-menu-item">
-                <a href="#" className="footer-menu-link">
-                  Privacy policy
-                </a>
-              </li>
-              <li className="footer-menu-item">
-                <a href="#" className="footer-menu-link">
+                <Link to="/faq" className="footer-menu-link">
                   FAQs
-                </a>
+                </Link>
               </li>
               <li className="footer-menu-item">
-                <a href="#" className="footer-menu-link">
+                <Link to="/contact" className="footer-menu-link">
                   Contact
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -52,16 +49,16 @@ export default function Footer() {
             <h5 className="text-white mb-3">Social</h5>
             <ul className="social-icon">
               <li>
-                <a href="#" className="social-icon-link bi-youtube" />
+                <Link to="#" className="social-icon-link bi-youtube" />
               </li>
               <li>
-                <a href="#" className="social-icon-link bi-whatsapp" />
+                <Link to="#" className="social-icon-link bi-whatsapp" />
               </li>
               <li>
-                <a href="#" className="social-icon-link bi-instagram" />
+                <Link to="#" className="social-icon-link bi-instagram" />
               </li>
               <li>
-                <a href="#" className="social-icon-link bi-skype" />
+                <Link to="#" className="social-icon-link bi-skype" />
               </li>
             </ul>
           </div>

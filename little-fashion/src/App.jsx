@@ -1,9 +1,13 @@
-import About from "./Components/About";
-import FeaturedProducts from "./Components/FeaturedProducts";
-import Footer from "./Components/Footer";
-import FrontProduct from "./Components/FrontProduct";
-import NavigationBar from "./Components/NavigationBar";
-import SlideShow from "./Components/SlideShow";
+import Home from "./Components/home/Home";
+import Footer from "./Components/Footer/Footer";
+import NavigationBar from "./Components/NavBar/NavigationBar";
+import { Routes, Route } from "react-router-dom";
+import Story from "./Components/Story/Story";
+import Contact from "./Components/Contact/Contact";
+import Faq from "./Components/Faq/Faq";
+import Products from "./Components/Products/Products";
+import Register from "./Components/Register/Register";
+import Login from "./Components/Login/Login";
 
 function App() {
   return (
@@ -15,10 +19,15 @@ function App() {
       </section>
       <main>
         <NavigationBar />
-        <SlideShow />
-        <About />
-        <FrontProduct />
-        <FeaturedProducts />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/story" element={<Story />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/faq" element={<Faq />} />
+          <Route path="/products" element={<Products />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="login" element={<Login />} />
+        </Routes>
       </main>
       <Footer />
     </div>
