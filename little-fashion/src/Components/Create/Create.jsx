@@ -1,13 +1,14 @@
-
+import { create } from "../../services/productService";
 
 export default function Create() {
-  const createProductHandler = (e) => {
+  const createProductHandler = async (e) => {
     e.preventDefault();
 
     const productData = Object.fromEntries(new FormData(e.currentTarget));
     console.log(productData);
 
-
+    const result = await create(productData);
+    console.log(result);
   };
 
   return (
@@ -55,6 +56,17 @@ export default function Create() {
                   required=""
                 />
                 <label htmlFor="subject">Product price</label>
+              </div>
+              <div className="form-floating my-4">
+                <input
+                  type="text"
+                  name="imageUrl"
+                  id="imageUrl"
+                  className="form-control"
+                  placeholder="imageUrl"
+                  required=""
+                />
+                <label htmlFor="subject">Image Url</label>
               </div>
               <div className="form-floating mb-4">
                 <textarea
