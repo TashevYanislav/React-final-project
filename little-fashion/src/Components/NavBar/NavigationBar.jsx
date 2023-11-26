@@ -22,7 +22,7 @@ export default function NavigationBar() {
         </Link>
         <div className="d-lg-none">
           <Link to="/register" className="bi-person custom-icon me-3" />
-          <Link to="product-detail.html" className="bi-bag custom-icon" />
+          <Link to="/details" className="bi-bag custom-icon" />
         </div>
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav mx-auto">
@@ -33,12 +33,17 @@ export default function NavigationBar() {
             </li>
             <li className="nav-item">
               <Link className="nav-link" to="/story">
-                Story
+                About Us
               </Link>
             </li>
             <li className="nav-item">
               <Link className="nav-link" to="/products">
                 Products
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/create">
+                Create Product
               </Link>
             </li>
             <li className="nav-item">

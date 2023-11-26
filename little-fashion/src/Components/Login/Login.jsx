@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function Login() {
   return (
     <main>
@@ -40,7 +42,7 @@ export default function Login() {
                     </button>
                     <p className="text-center">
                       Don’t have an account?{" "}
-                      <a href="/register">Create One</a>
+                      <Link to="/register">Create One</Link>
                     </p>
                   </form>
                 </div>

@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function Register() {
   return (
     <main>
@@ -32,7 +34,6 @@ export default function Register() {
                         required=""
                       />
                       <label htmlFor="password">Password</label>
-                     
                     </div>
                     <div className="form-floating">
                       <input
@@ -56,7 +57,7 @@ export default function Register() {
                     </button>
                     <p className="text-center">
                       Already have an account? Please{" "}
-                      <a href="/login">Sign In</a>
+                      <Link to="/login">Sign In</Link>
                     </p>
                   </form>
                 </div>
