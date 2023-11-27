@@ -1,4 +1,15 @@
+import { useEffect, useState } from "react";
+import * as productService from "../../services/productService";
+
 export default function Products() {
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    productService.getAll().then((result) => setProducts(result));
+  }, []);
+  
+  console.log(products);
+
   return (
     <main>
       <header className="site-header section-padding d-flex justify-content-center align-items-center">

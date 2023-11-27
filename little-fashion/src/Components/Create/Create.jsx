@@ -1,14 +1,21 @@
-import { create } from "../../services/productService";
+import { useNavigate } from "react-router-dom";
+import * as productService from "../../services/productService";
 
 export default function Create() {
+  const navigate = useNavigate();
+
   const createProductHandler = async (e) => {
     e.preventDefault();
 
     const productData = Object.fromEntries(new FormData(e.currentTarget));
-    console.log(productData);
+    try {
+      await productService.create(productData);
 
-    const result = await create(productData);
-    console.log(result);
+      navigate("/products");
+    } catch (error) {
+      //Error notification
+      console.log(error);
+    }
   };
 
   return (
