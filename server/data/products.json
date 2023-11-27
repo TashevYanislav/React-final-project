@@ -1,26 +1,30 @@
 {
-  "70879735-4b82-460a-bde0-f87fa3ba9927": {
-    "name": "Summer t-shirt",
-    "category": "fashion",
-    "imageUrl": "https://imagescdn.simons.ca/images/9659-212-45-A1_2/summer-bouquet-camp-shirt.jpg?__=3",
-    "description": "The best t-shirt for the summer,",
-    "price": "35",
-    "_id": "70879735-4b82-460a-bde0-f87fa3ba9927"
-  },
-  "273d9570-c913-4d50-9cac-23f01db64ba7": {
-    "name": "Black Shorts",
-    "category": "fashion",
-    "price": "40",
-    "imageUrl": "https://m.media-amazon.com/images/I/71TP+AtjNNL.jpg",
-    "description": "Black everyday shorts.",
-    "_id": "273d9570-c913-4d50-9cac-23f01db64ba7"
-  },
-  "3799da0c-fc9e-4d7f-9644-4e4f54389153": {
-    "name": "Brown Bucket Hat",
-    "category": "fashion",
-    "price": "26",
-    "imageUrl": "https://assets.hermes.com/is/image/hermesproduct/fred-bucket-hat--231078N%204E-worn-1-0-0-800-800_g.jpg",
-    "description": "Brown Stylish bucket hat",
-    "_id": "3799da0c-fc9e-4d7f-9644-4e4f54389153"
+    "70879735-4b82-460a-bde0-f87fa3ba9927": {
+      "name": "Summer t-shirt",
+      "category": "T-Shirts",
+      "brand": "PCSC",
+      "price": "35",
+      "imageUrl": "https://block-22.eu/wp-content/uploads/2023/10/IMG_5625-768x1153.jpg",
+      "description": "The best t-shirt for the summer,",
+      "_id": "70879735-4b82-460a-bde0-f87fa3ba9927"
+    },
+    "273d9570-c913-4d50-9cac-23f01db64ba7": {
+      "name": "Black Shorts",
+      "category": "Shorts",
+      "brand": "Gym King",
+      "price": "40",
+      "imageUrl": "https://block-22.eu/wp-content/uploads/2021/01/Gym-King-Active-woven-short-sport-lift-vest-black_697_900x.jpg",
+      "description": "Black everyday shorts.",
+      "_id": "273d9570-c913-4d50-9cac-23f01db64ba7"
+    },
+    "3799da0c-fc9e-4d7f-9644-4e4f54389153": {
+      "name": "Brown Bucket Hat",
+      "category": "Hoodies",
+      "brand": "Forgotten Faces",
+      "price": "26",
+      "imageUrl": "https://block-22.eu/wp-content/uploads/2023/01/forgotten-faces-hoodie-black-962202-768x1019.jpg",
+      "description": "Brown Stylish bucket hat",
+      "_id": "3799da0c-fc9e-4d7f-9644-4e4f54389153"
+    }
   }
-}
+  
