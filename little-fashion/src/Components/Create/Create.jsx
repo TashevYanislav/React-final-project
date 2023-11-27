@@ -37,14 +37,14 @@ export default function Create() {
                   name="name"
                   id="name"
                   className="form-control"
-                  placeholder="Full name"
+                  placeholder="Product name"
                   required=""
                 />
                 <label htmlFor="name">Product name</label>
               </div>
               <div className="form-floating my-4">
                 <input
-                  type="category"
+                  type="text"
                   name="category"
                   id="category"
                   className="form-control"
@@ -55,11 +55,11 @@ export default function Create() {
               </div>
               <div className="form-floating my-4">
                 <input
-                  type="category"
-                  name="category"
-                  id="category"
+                  type="text"
+                  name="brand"
+                  id="brand"
                   className="form-control"
-                  placeholder="Category"
+                  placeholder="Brand name"
                   required=""
                 />
                 <label htmlFor="email">Brand name</label>
