@@ -4,7 +4,7 @@ export default function FeaturedProducts() {
       <div className="container">
         <div className="row">
           <div className="col-12 text-center">
-            <h2 className="mb-5">Featured Products</h2>
+            <h2 className="mb-5">Latest Products</h2>
           </div>
           <div className="col-lg-4 col-12 mb-3">
             <div className="product-thumb">

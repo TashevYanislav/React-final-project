@@ -66,6 +66,17 @@ export default function Create() {
               </div>
               <div className="form-floating my-4">
                 <input
+                  type="text"
+                  name="materials"
+                  id="materials"
+                  className="form-control"
+                  placeholder="Materials"
+                  required=""
+                />
+                <label htmlFor="email">Materials</label>
+              </div>
+              <div className="form-floating my-4">
+                <input
                   type="number"
                   name="price"
                   id="price"

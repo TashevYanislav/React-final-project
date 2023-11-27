@@ -1,20 +1,29 @@
-export default function ProductListItem({ name, category, price, imageUrl ,brand}) {
+import { Link } from "react-router-dom";
+
+export default function ProductListItem({
+  _id,
+  name,
+  category,
+  price,
+  imageUrl,
+  brand,
+}) {
   return (
     <div className="col-lg-4 col-12 mb-3">
       <div className="product-thumb">
-        <a href="product-detail.html">
+        <Link to={`/products/${_id}`}>
           <img src={imageUrl} className="img-fluid product-image" alt={name} />
-        </a>
+        </Link>
         <div className="product-top d-flex">
           <span className="product-alert me-auto">{category}</span>
-          <a href="#" className="bi-heart-fill product-icon" />
+          <Link to="*" className="bi-heart-fill product-icon" />
         </div>
         <div className="product-info d-flex">
           <div>
             <h5 className="product-title mb-0">
-              <a href="product-detail.html" className="product-title-link">
+              <Link to={`/products/${_id}`} className="product-title-link">
                 {name}
-              </a>
+              </Link>
             </h5>
             <p className="product-p">{brand}</p>
           </div>
