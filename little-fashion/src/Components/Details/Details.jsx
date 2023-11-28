@@ -5,10 +5,13 @@ import * as CommentService from "../../services/commentService";
 
 export default function Details() {
   const [product, setProduct] = useState({});
+  const [comments, setComments] = useState([]);
   const { productId } = useParams();
-  console.log(productId);
+
   useEffect(() => {
-    productService.getOne(productId).then((data) => setProduct(data));
+    productService.getOne(productId).then(setProduct);
+
+    CommentService.getAll().then(setComments);
   }, [productId]);
 
   if (!product || Object.keys(product).length === 0) {
@@ -29,7 +32,7 @@ export default function Details() {
     const newComment = await CommentService.create(
       productId,
       formData.get("username"),
-      formData.get("comment")
+      formData.get("commentText")
     );
     console.log(newComment);
   };
@@ -106,14 +109,14 @@ export default function Details() {
                     <div className="form-floating mb-4">
                       <textarea
                         type="text"
-                        name="comment"
-                        id="comment"
+                        name="commentText"
+                        id="commentText"
                         className="form-control"
-                        placeholder="comment"
+                        placeholder="commentText"
                         required=""
                         style={{ height: 80 }}
                       />
-                      <label htmlFor="comment">Comment...</label>
+                      <label htmlFor="commentText">Comment...</label>
                       <input
                         type="submit"
                         className="btn custom-btn cart-btn"
@@ -131,18 +134,21 @@ export default function Details() {
           <h2 className="mb-4">
             Customer <span>Comments</span>
           </h2>
+        </div>
+        {comments.map((comment) => (
           <div className="slick-testimonial">
             <div className="slick-testimonial-caption">
-              <p className="lead">
-                Over three years in business, We’ve had the chance to work on a
-                variety of projects, with companies Lorem ipsum dolor sit amet
-              </p>
+              <p className="lead">{comment.text}</p>
               <div className="slick-testimonial-client d-flex align-items-center mt-4">
-                <span>Username : George</span>
+                <span>{comment.username}</span>
               </div>
             </div>
           </div>
-        </div>
+        ))}
+          {comments.length===0 && (
+            <p>No comments yet...</p>
+          )}
+
         {/* All Comments */}
       </section>
       {/* <section className="related-product section-padding border-top">
