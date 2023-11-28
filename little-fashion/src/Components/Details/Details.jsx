@@ -34,7 +34,7 @@ export default function Details() {
       formData.get("username"),
       formData.get("commentText")
     );
-    console.log(newComment);
+    setComments(state=>[...state,newComment])
   };
 
   return (
@@ -136,7 +136,7 @@ export default function Details() {
           </h2>
         </div>
         {comments.map((comment) => (
-          <div className="slick-testimonial">
+          <div key={comment._id} className="slick-testimonial">
             <div className="slick-testimonial-caption">
               <p className="lead">{comment.text}</p>
               <div className="slick-testimonial-client d-flex align-items-center mt-4">
