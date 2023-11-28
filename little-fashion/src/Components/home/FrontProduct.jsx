@@ -19,7 +19,7 @@ export default function FrontProduct() {
                 Credits go to Unsplash and FreePik websites for images used in
                 this Little Fashion by Tooplate.
               </p>
-              <a href="products.html" className="custom-link">
+              <a href="/products" className="custom-link">
                 Explore Products
                 <i className="bi-arrow-right ms-2" />
               </a>

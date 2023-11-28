@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function About() {
   return (
     <section className="about section-padding">
@@ -82,8 +84,8 @@ export default function About() {
                       </h4>
                       <p>
                         Little Fashion templates comes with{" "}
-                        <a href="sign-in.html">sign in</a> /{" "}
-                        <a href="sign-up.html">sign up</a> pages, product
+                        <Link to="/login">sign in</Link> /{" "}
+                        <Link to="/register">sign up</Link> pages, product
                         listing / product detail, about, FAQs, and contact page.
                       </p>
                       <p>
@@ -92,10 +94,10 @@ export default function About() {
                         need.
                       </p>
                       <div className="mt-2 mt-lg-auto">
-                        <a href="about.html" className="custom-link mb-2">
+                        <Link to="/about-us" className="custom-link mb-2">
                           Learn more about us
                           <i className="bi-arrow-right ms-2" />
-                        </a>
+                        </Link>
                       </div>
                     </div>
                   </div>
@@ -124,14 +126,14 @@ export default function About() {
                       <h4 className="mb-3">Life at Studio</h4>
                       <p>
                         Over three years in business, We’ve had the chance to
-                        work on a variety of projects, with companies
+                        work on Link variety of projects, with companies
                       </p>
                       <p>Custom work is branding, web design, UI/UX design</p>
                       <div className="mt-2 mt-lg-auto">
-                        <a href="contact.html" className="custom-link mb-2">
+                        <Link to="/contact" className="custom-link mb-2">
                           Work with us
                           <i className="bi-arrow-right ms-2" />
-                        </a>
+                        </Link>
                       </div>
                     </div>
                   </div>
@@ -197,10 +199,10 @@ export default function About() {
                         </div>
                       </div>
                       <div className="mt-2 mt-lg-auto">
-                        <a href="products.html" className="custom-link mb-2">
+                        <Link to="/products" className="custom-link mb-2">
                           Explore products
                           <i className="bi-arrow-right ms-2" />
-                        </a>
+                        </Link>
                       </div>
                     </div>
                   </div>

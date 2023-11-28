@@ -51,7 +51,7 @@ export default function Create() {
                   placeholder="Category"
                   required=""
                 />
-                <label htmlFor="email">Category</label>
+                <label htmlFor="category">Category</label>
               </div>
               <div className="form-floating my-4">
                 <input
@@ -62,7 +62,7 @@ export default function Create() {
                   placeholder="Brand name"
                   required=""
                 />
-                <label htmlFor="email">Brand name</label>
+                <label htmlFor="brand">Brand name</label>
               </div>
               <div className="form-floating my-4">
                 <input
@@ -73,7 +73,7 @@ export default function Create() {
                   placeholder="Materials"
                   required=""
                 />
-                <label htmlFor="email">Materials</label>
+                <label htmlFor="materials">Materials</label>
               </div>
               <div className="form-floating my-4">
                 <input
@@ -84,7 +84,7 @@ export default function Create() {
                   placeholder="Price"
                   required=""
                 />
-                <label htmlFor="subject">Product price</label>
+                <label htmlFor="price">Product price</label>
               </div>
               <div className="form-floating my-4">
                 <input
@@ -95,7 +95,7 @@ export default function Create() {
                   placeholder="imageUrl"
                   required=""
                 />
-                <label htmlFor="subject">Image Url</label>
+                <label htmlFor="imageUrl">Image Url</label>
               </div>
               <div className="form-floating mb-4">
                 <textarea
@@ -107,7 +107,7 @@ export default function Create() {
                   style={{ height: 160 }}
                   defaultValue={""}
                 />
-                <label htmlFor="message">Tell us about the product...</label>
+                <label htmlFor="description">Tell us about the product...</label>
               </div>
 
               <div className="col-lg-5 col-6">

@@ -9,8 +9,6 @@ export default function Products() {
     productService.getAll().then((result) => setProducts(result));
   }, []);
 
-  console.log(products);
-
   return (
     <main>
       <header className="site-header section-padding d-flex justify-content-center align-items-center">

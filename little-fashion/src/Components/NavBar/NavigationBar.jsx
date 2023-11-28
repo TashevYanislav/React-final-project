@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 export default function NavigationBar() {
   return (
@@ -15,51 +15,51 @@ export default function NavigationBar() {
         >
           <span className="navbar-toggler-icon" />
         </button>
-        <Link className="navbar-brand" to="/">
+        <NavLink className="navbar-brand" to="/">
           <strong>
             <span>Little</span> Fashion
           </strong>
-        </Link>
+        </NavLink>
         <div className="d-lg-none">
-          <Link to="/register" className="bi-person custom-icon me-3" />
-          <Link to="/details" className="bi-bag custom-icon" />
+          <NavLink to="/register" className="bi-person custom-icon me-3" />
+          <NavLink to="/details" className="bi-bag custom-icon" />
         </div>
         <div className="collapse navbar-collapse" id="navbarNav">
-          <ul className="navbar-nav mx-auto">
+          <ul className="navbar-nav mx-auto" >
             <li className="nav-item">
-              <Link className="nav-link active" to="/">
+              <NavLink className="nav-link" to="/" >
                 Home
-              </Link>
+              </NavLink>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/story">
+              <NavLink className="nav-link" to="/about-us">
                 About Us
-              </Link>
+              </NavLink>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/products">
+              <NavLink className="nav-link" to="/products">
                 Products
-              </Link>
+              </NavLink>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/create">
+              <NavLink className="nav-link" to="/create">
                 Create Product
-              </Link>
+              </NavLink>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/faq">
+              <NavLink className="nav-link" to="/faq">
                 FAQs
-              </Link>
+              </NavLink>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/contact">
+              <NavLink className="nav-link" to="/contact">
                 Contact
-              </Link>
+              </NavLink>
             </li>
           </ul>
           <div className="d-none d-lg-block">
-            <Link to="/register" className="bi-person custom-icon me-3" />
-            <Link to="/cart" className="bi-bag custom-icon" />
+            <NavLink to="/register" className="bi-person custom-icon me-3" />
+            <NavLink to="/cart" className="bi-bag custom-icon" />
           </div>
         </div>
       </div>

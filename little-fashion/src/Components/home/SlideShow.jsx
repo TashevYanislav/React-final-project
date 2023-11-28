@@ -1,3 +1,6 @@
+import { Link } from "react-router-dom";
+
+
 export default function SlideShow() {
   return (
     <section className="slick-slideshow">
@@ -16,9 +19,9 @@ export default function SlideShow() {
                   Little fashion template comes with total 8 HTML pages provided
                   by Tooplate website.
                 </p>
-                <a href="about.html" className="btn custom-btn">
+                <Link to="/about-us" className="btn custom-btn">
                   Learn more about us
-                </a>
+                </Link>
               </div>
             </div>
           </div>
@@ -39,9 +42,9 @@ export default function SlideShow() {
                   Please share this Little Fashion template to your friends.
                   Thank you for supporting us.
                 </p>
-                <a href="product.html" className="btn custom-btn">
+                <Link to="/products" className="btn custom-btn">
                   Explore products
-                </a>
+                </Link>
               </div>
             </div>
           </div>
@@ -62,9 +65,9 @@ export default function SlideShow() {
                   Tooplate is one of the best HTML CSS template websites for
                   everyone.
                 </p>
-                <a href="contact.html" className="btn custom-btn">
+                <Link to="/contacts" className="btn custom-btn">
                   Work with us
-                </a>
+                </Link>
               </div>
             </div>
           </div>

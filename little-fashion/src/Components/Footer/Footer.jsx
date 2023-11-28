@@ -24,8 +24,8 @@ export default function Footer() {
             <h5 className="text-white mb-3">Sitemap</h5>
             <ul className="footer-menu d-flex flex-wrap">
               <li className="footer-menu-item">
-                <Link to="/story" className="footer-menu-link">
-                  Story
+                <Link to="/about-us" className="footer-menu-link">
+                  About Us
                 </Link>
               </li>
               <li className="footer-menu-item">

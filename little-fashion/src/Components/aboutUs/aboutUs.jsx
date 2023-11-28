@@ -1,4 +1,4 @@
-export default function Story() {
+export default function AboutUs() {
   return (
     <>
       <main>
