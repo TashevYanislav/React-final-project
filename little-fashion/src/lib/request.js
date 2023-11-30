@@ -16,7 +16,6 @@ const request = async (method, url, data) => {
     method,
     ...buildOptions(data),
   });
-  console.log(url);
   const result = response.json();
   return result;
 };

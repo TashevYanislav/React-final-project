@@ -11,7 +11,7 @@ export default function Details() {
   useEffect(() => {
     productService.getOne(productId).then(setProduct);
 
-    CommentService.getAll().then(setComments);
+    CommentService.getAll(productId).then(setComments);
   }, [productId]);
 
   if (!product || Object.keys(product).length === 0) {
@@ -120,6 +120,7 @@ export default function Details() {
                       <input
                         type="submit"
                         className="btn custom-btn cart-btn"
+                        value="Add comment"
                       />
                     </div>
                   </form>

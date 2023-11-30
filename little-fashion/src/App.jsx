@@ -31,6 +31,7 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="login" element={<Login />} />
           <Route path="/products/:productId" element={<Details />} />
+          {/* <Route path="*" element={<ErrorPage/>}/> */}
         </Routes>
       </main>
       <Footer />

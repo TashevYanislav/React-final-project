@@ -11,8 +11,14 @@ export const create = async (productId, username, text) => {
   return newComment;
 };
 
-export const getAll = async () => {
-  const result = await request.get(baseUrl);
+export const getAll = async (productId) => {
 
-  return Object.values(result);
+  const query = new URLSearchParams({
+    where: `productId="${productId}"`
+  })
+
+
+  const result = await request.get(`${baseUrl}`);
+
+  return Object.values(result).filter(comment=>comment.productId===productId);  
 };
