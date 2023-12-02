@@ -11,39 +11,41 @@ import Login from "./Components/Login/Login";
 import Create from "./Components/Create/Create";
 import Details from "./Components/Details/Details";
 import AboutUs from "./Components/aboutUs/aboutUs";
+import AuthContext from "./contexts/authContext";
 
 function App() {
   const [auth, setAuth] = useState({});
 
-  const loginSubmitHandler = (values) => {};
+  const loginSubmitHandler = (values) => {
+    console.log(values);
+  };
 
   return (
-    <div>
-      <section className="preloader">
-        <div className="spinner">
-          <span className="sk-inner-circle" />
-        </div>
-      </section>
-      <main>
-        <NavigationBar />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about-us" element={<AboutUs />} />
-          <Route path="/products" element={<Products />} />
-          <Route path="/create" element={<Create />} />
-          <Route path="/faq" element={<Faq />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/register" element={<Register />} />
-          <Route
-            path="login"
-            element={<Login loginSubmitHandler={loginSubmitHandler} />}
-          />
-          <Route path="/products/:productId" element={<Details />} />
-          {/* <Route path="*" element={<ErrorPage/>}/> */}
-        </Routes>
-      </main>
-      <Footer />
-    </div>
+    <AuthContext.Provider value={{ loginSubmitHandler }}>
+      <div>
+        <section className="preloader">
+          <div className="spinner">
+            <span className="sk-inner-circle" />
+          </div>
+        </section>
+        <main>
+          <NavigationBar />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about-us" element={<AboutUs />} />
+            <Route path="/products" element={<Products />} />
+            <Route path="/create" element={<Create />} />
+            <Route path="/faq" element={<Faq />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="login" element={<Login />} />
+            <Route path="/products/:productId" element={<Details />} />
+            {/* <Route path="*" element={<ErrorPage/>}/> */}
+          </Routes>
+        </main>
+        <Footer />
+      </div>
+    </AuthContext.Provider>
   );
 }
 
