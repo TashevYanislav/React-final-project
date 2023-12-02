@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import Home from "./Components/home/Home";
 import Footer from "./Components/Footer/Footer";
@@ -12,6 +13,10 @@ import Details from "./Components/Details/Details";
 import AboutUs from "./Components/aboutUs/aboutUs";
 
 function App() {
+  const [auth, setAuth] = useState({});
+
+  const loginSubmitHandler = (values) => {};
+
   return (
     <div>
       <section className="preloader">
@@ -29,7 +34,10 @@ function App() {
           <Route path="/faq" element={<Faq />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/register" element={<Register />} />
-          <Route path="login" element={<Login />} />
+          <Route
+            path="login"
+            element={<Login loginSubmitHandler={loginSubmitHandler} />}
+          />
           <Route path="/products/:productId" element={<Details />} />
           {/* <Route path="*" element={<ErrorPage/>}/> */}
         </Routes>
