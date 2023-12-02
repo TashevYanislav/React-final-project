@@ -1,6 +1,12 @@
 import { Link } from "react-router-dom";
+import { useForm } from "../../hooks/useForm";
 
 export default function Login() {
+  const { values, onChange, onSubmit } = useForm({
+    email: "",
+    password: "",
+  });
+
   return (
     <main>
       <section className="sign-in-form section-padding">
@@ -10,7 +16,7 @@ export default function Login() {
               <h1 className="hero-title text-center mb-5">Sign In</h1>
               <div className="row">
                 <div className="col-lg-8 col-11 mx-auto">
-                  <form role="form" method="post">
+                  <form role="form" method="post" onSubmit={onSubmit}>
                     <div className="form-floating mb-4 p-0">
                       <input
                         type="email"
@@ -20,6 +26,8 @@ export default function Login() {
                         className="form-control"
                         placeholder="Email address"
                         required=""
+                        onChange={onChange}
+                        value={values.email}
                       />
                       <label htmlFor="email">Email address</label>
                     </div>
@@ -31,6 +39,8 @@ export default function Login() {
                         className="form-control"
                         placeholder="Password"
                         required=""
+                        onChange={onChange}
+                        value={values.password}
                       />
                       <label htmlFor="password">Password</label>
                     </div>
