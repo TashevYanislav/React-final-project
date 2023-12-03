@@ -1,6 +1,10 @@
+import { useContext } from "react";
 import { NavLink } from "react-router-dom";
+import AuthContext from "../../contexts/authContext";
 
 export default function NavigationBar() {
+  const { isAuthenticated, email } = useContext(AuthContext);
+
   return (
     <nav className="navbar navbar-expand-lg">
       <div className="container">
@@ -25,9 +29,9 @@ export default function NavigationBar() {
           <NavLink to="/details" className="bi-bag custom-icon" />
         </div>
         <div className="collapse navbar-collapse" id="navbarNav">
-          <ul className="navbar-nav mx-auto" >
+          <ul className="navbar-nav mx-auto">
             <li className="nav-item">
-              <NavLink className="nav-link" to="/" >
+              <NavLink className="nav-link" to="/">
                 Home
               </NavLink>
             </li>
@@ -41,11 +45,14 @@ export default function NavigationBar() {
                 Products
               </NavLink>
             </li>
-            <li className="nav-item">
-              <NavLink className="nav-link" to="/create">
-                Create Product
-              </NavLink>
-            </li>
+            {isAuthenticated && (
+              <li className="nav-item">
+                <NavLink className="nav-link" to="/create">
+                  Create Product
+                </NavLink>
+              </li>
+            )}
+
             <li className="nav-item">
               <NavLink className="nav-link" to="/faq">
                 FAQs
@@ -56,10 +63,21 @@ export default function NavigationBar() {
                 Contact
               </NavLink>
             </li>
+            {isAuthenticated && (
+              <li>
+                <NavLink className="nav-link" to="/logout">
+                  Logout
+                </NavLink>
+              </li>
+            )}
           </ul>
           <div className="d-none d-lg-block">
-            <NavLink to="/register" className="bi-person custom-icon me-3" />
-            <NavLink to="/cart" className="bi-bag custom-icon" />
+            {!isAuthenticated && (
+              <NavLink to="/register" className="bi-person custom-icon me-3" />
+            )}
+            {isAuthenticated && (
+              <NavLink to="/cart" className="bi-bag custom-icon" />
+            )}
           </div>
         </div>
       </div>

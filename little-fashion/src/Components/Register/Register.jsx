@@ -1,6 +1,23 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import AuthContext from "../../contexts/authContext";
+import useForm from "../../hooks/useForm";
+
+const RegisterFormKeys = {
+  Email: "email",
+  Password: "password",
+  ConfirmPassword: "confirm_password",
+};
 
 export default function Register() {
+  const { registerSubmitHandler } = useContext(AuthContext);
+
+  const { values, onChange, onSubmit } = useForm(registerSubmitHandler, {
+    [RegisterFormKeys.Email]: "",
+    [RegisterFormKeys.Password]: "",
+    [RegisterFormKeys.ConfirmPassword]: "",
+  });
+
   return (
     <main>
       <section className="sign-in-form section-padding">
@@ -10,7 +27,7 @@ export default function Register() {
               <h1 className="hero-title text-center mb-5">Sign Up</h1>
               <div className="row">
                 <div className="col-lg-8 col-11 mx-auto">
-                  <form role="form" method="post">
+                  <form role="form" method="post" onSubmit={onSubmit}>
                     <div className="form-floating">
                       <input
                         type="email"
@@ -20,6 +37,8 @@ export default function Register() {
                         className="form-control"
                         placeholder="Email address"
                         required=""
+                        onChange={onChange}
+                        value={values[RegisterFormKeys.Email]}
                       />
                       <label htmlFor="email">Email address</label>
                     </div>
@@ -32,6 +51,8 @@ export default function Register() {
                         className="form-control"
                         placeholder="Password"
                         required=""
+                        onChange={onChange}
+                        value={values[RegisterFormKeys.Password]}
                       />
                       <label htmlFor="password">Password</label>
                     </div>
@@ -44,6 +65,8 @@ export default function Register() {
                         className="form-control"
                         placeholder="Password"
                         required=""
+                        onChange={onChange}
+                        value={values[RegisterFormKeys.ConfirmPassword]}
                       />
                       <label htmlFor="confirm_password">
                         Password Confirmation

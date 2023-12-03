@@ -29,8 +29,22 @@ function App() {
     navigate(Path.Home);
   };
 
+  const registerSubmitHandler = async (values)=>{
+    console.log(values);
+  }
+
+  const values = {
+    loginSubmitHandler,
+    registerSubmitHandler,
+    email: auth.email,
+    isAuthenticated: !!auth.email,
+
+  }
+
+
+
   return (
-    <AuthContext.Provider value={{ loginSubmitHandler }}>
+    <AuthContext.Provider value={values}>
       <div>
         <section className="preloader">
           <div className="spinner">
