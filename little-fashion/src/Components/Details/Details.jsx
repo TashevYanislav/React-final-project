@@ -1,9 +1,11 @@
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import * as productService from "../../services/productService";
 import * as CommentService from "../../services/commentService";
+import AuthContext from "../../contexts/authContext";
 
 export default function Details() {
+  const { email } = useContext(AuthContext);
   const [product, setProduct] = useState({});
   const [comments, setComments] = useState([]);
   const { productId } = useParams();
@@ -31,10 +33,9 @@ export default function Details() {
 
     const newComment = await CommentService.create(
       productId,
-      formData.get("username"),
       formData.get("commentText")
     );
-    setComments(state=>[...state,newComment])
+    setComments((state) => [...state, { ...newComment, owner: { email } }]);
   };
 
   return (
@@ -95,17 +96,6 @@ export default function Details() {
                   <strong className="d-block mt-4 mb-2">Add Comment:</strong>
 
                   <form onSubmit={addCommentHandler}>
-                    <div className="form-floating">
-                      <input
-                        type="text"
-                        name="username"
-                        id="username"
-                        className="form-control"
-                        placeholder="username"
-                        required=""
-                      />
-                      <label htmlFor="username">Username</label>
-                    </div>
                     <div className="form-floating mb-4">
                       <textarea
                         type="text"
@@ -136,19 +126,17 @@ export default function Details() {
             Customer <span>Comments</span>
           </h2>
         </div>
-        {comments.map((comment) => (
-          <div key={comment._id} className="slick-testimonial">
+        {comments.map(({ _id, text, owner: { email } }) => (
+          <div key={_id} className="slick-testimonial">
             <div className="slick-testimonial-caption">
-              <p className="lead">{comment.text}</p>
+              <p className="lead">{text}</p>
               <div className="slick-testimonial-client d-flex align-items-center mt-4">
-                <span>{comment.username}</span>
+                <span>{email.split("@")[0]}</span>
               </div>
             </div>
           </div>
         ))}
-          {comments.length===0 && (
-            <p>No comments yet...</p>
-          )}
+        {comments.length === 0 && <p>No comments yet...</p>}
 
         {/* All Comments */}
       </section>
