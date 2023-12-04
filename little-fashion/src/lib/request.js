@@ -8,15 +8,32 @@ const buildOptions = (data) => {
     };
   }
 
+  const token = localStorage.getItem("accessToken");
+
+  if (token) {
+    options.headers = {
+      ...options.headers,
+      "X-Authorization": token,
+    };
+  }
+
   return options;
 };
 
 const request = async (method, url, data) => {
   const response = await fetch(url, {
-    method,
     ...buildOptions(data),
+    method,
   });
-  const result = response.json();
+  if (response.status === 204) {
+    console.log("Request successful with 204 status");
+    return {};
+  }
+  if (!response.ok) {
+    throw result;
+  }
+  const result = await response.json();
+  console.log("Success");
   return result;
 };
 
