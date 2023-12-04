@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function FeaturedProducts() {
   return (
     <section className="featured-product section-padding">
@@ -101,9 +103,9 @@ export default function FeaturedProducts() {
             </div>
           </div>
           <div className="col-12 text-center">
-            <a href="products.html" className="view-all">
+            <Link to="/products" className="view-all">
               View All Products
-            </a>
+            </Link>
           </div>
         </div>
       </div>
