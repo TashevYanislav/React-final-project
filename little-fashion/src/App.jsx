@@ -3,7 +3,7 @@ import { Routes, Route, useNavigate } from "react-router-dom";
 
 import * as authService from "./services/authService";
 import Path from "./paths";
-import AuthContext from "./contexts/authContext";
+import {AuthProvider} from "./contexts/authContext";
 
 import Home from "./Components/home/Home";
 import Footer from "./Components/Footer/Footer";
@@ -66,7 +66,7 @@ function App() {
   };
 
   return (
-    <AuthContext.Provider value={values}>
+    <AuthProvider value={values}>
       <div>
         <section className="preloader">
           <div className="spinner">
@@ -91,7 +91,7 @@ function App() {
         </main>
         <Footer />
       </div>
-    </AuthContext.Provider>
+    </AuthProvider>
   );
 }
 

@@ -131,7 +131,7 @@ export default function Details() {
             <div className="slick-testimonial-caption">
               <p className="lead">{text}</p>
               <div className="slick-testimonial-client d-flex align-items-center mt-4">
-                <span>{email.split("@")[0]}</span>
+                <span>{email}</span>
               </div>
             </div>
           </div>
