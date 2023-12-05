@@ -1,42 +1,45 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useReducer, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import * as productService from "../../services/productService";
 import * as CommentService from "../../services/commentService";
 import AuthContext from "../../contexts/authContext";
+import useForm from "../../hooks/useForm";
+import reducer from "./Commentreducer";
 
 export default function Details() {
   const { email } = useContext(AuthContext);
   const [product, setProduct] = useState({});
-  const [comments, setComments] = useState([]);
+  const [comments, dispatch] = useReducer(reducer, []);
   const { productId } = useParams();
+
 
   useEffect(() => {
     productService.getOne(productId).then(setProduct);
 
-    CommentService.getAll(productId).then(setComments);
+    CommentService.getAll(productId).then((result) => {
+      dispatch({
+        type: "GET_ALL_COMMENTS",
+        payload: result,
+      });
+    });
   }, [productId]);
 
-  if (!product || Object.keys(product).length === 0) {
-    return (
-      <section className="preloader">
-        <div className="spinner">
-          <span className="sk-inner-circle" />
-        </div>
-      </section>
-    );
-  }
-
-  const addCommentHandler = async (e) => {
-    e.preventDefault();
-
-    const formData = new FormData(e.currentTarget);
-
+  const addCommentHandler = async (values) => {
     const newComment = await CommentService.create(
       productId,
-      formData.get("commentText")
+      values.commentText
     );
-    setComments((state) => [...state, { ...newComment, owner: { email } }]);
+
+    newComment.owner = {email} ;
+
+    dispatch({
+      type: "ADD_COMMENT",
+      payload: newComment,
+    });
   };
+  const { values, onChange, onSubmit } = useForm(addCommentHandler, {
+    commentText: "",
+  });
 
   return (
     <main>
@@ -95,22 +98,23 @@ export default function Details() {
                 <article className="col-lg-6 col-12 mt-4 mt-lg-0">
                   <strong className="d-block mt-4 mb-2">Add Comment:</strong>
 
-                  <form onSubmit={addCommentHandler}>
+                  <form onSubmit={onSubmit}>
                     <div className="form-floating mb-4">
                       <textarea
                         type="text"
                         name="commentText"
+                        value={values.commentText}
+                        onChange={onChange}
                         id="commentText"
                         className="form-control"
                         placeholder="commentText"
-                        required=""
-                        style={{ height: 80 }}
+                        style={{ height: 100 }}
                       />
                       <label htmlFor="commentText">Comment...</label>
                       <input
                         type="submit"
                         className="btn custom-btn cart-btn"
-                        value="Add comment"
+                        value="Add Comment"
                       />
                     </div>
                   </form>
@@ -126,15 +130,13 @@ export default function Details() {
             Customer <span>Comments</span>
           </h2>
         </div>
-        {comments.map(({ _id, text, owner: { email } }) => (
-          <div key={_id} className="slick-testimonial">
-            <div className="slick-testimonial-caption">
+        {comments.map(({ _id, text, owner:{email} }) => (
+            <div key={_id} className="slick-testimonial-caption">
               <p className="lead">{text}</p>
               <div className="slick-testimonial-client d-flex align-items-center mt-4">
                 <span>{email}</span>
               </div>
             </div>
-          </div>
         ))}
         {comments.length === 0 && <p>No comments yet...</p>}
 
