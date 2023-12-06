@@ -8,6 +8,12 @@ export const create = async (productData) => {
   return result;
 };
 
+export const edit = async (productId,productData) => {
+  const result = await request.put(`${baseUrl}/${productId}`, productData);
+
+  return result;
+};
+
 export const getAll = async () => {
   const result = await request.get(baseUrl);
 
