@@ -8,5 +8,7 @@ const Path = {
   Contact: "/contact",
   Register: "/register",
   Login: "/login",
+  Details: "/products/:productId",
+  Edit: "/products/:productId/edit" 
 };
 export default Path;

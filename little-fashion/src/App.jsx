@@ -15,6 +15,7 @@ import Create from "./Components/Create/Create";
 import Details from "./Components/Details/Details";
 import AboutUs from "./Components/aboutUs/aboutUs";
 import Logout from "./Components/Logout/Logout";
+import Edit from "./Components/Edit/Edit";
 
 function App() {
   return (
@@ -37,7 +38,8 @@ function App() {
             <Route path={Path.Register} element={<Register />} />
             <Route path={Path.Login} element={<Login />} />
             <Route path={Path.Logout} element={<Logout />} />
-            <Route path="/products/:productId" element={<Details />} />
+            <Route path={Path.Details} element={<Details />} />
+            <Route path={Path.Edit} element={<Edit />} />
             {/* <Route path="*" element={<ErrorPage/>}/> */}
           </Routes>
         </main>
