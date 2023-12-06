@@ -1,0 +1,49 @@
+.button {
+  display: inline-block;
+  width: 245px; /* Set a fixed width for the buttons */
+  padding: 10px 0; /* Adjust padding to center text vertically */
+  margin-top: 20px; /* Add margin space above the buttons */
+  margin-right: 10px; /* Add margin between buttons */
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  border: none;
+  border-radius: 0;
+  cursor: pointer;
+}
+
+.delete-btn,
+.edit-btn {
+  background-color: black;
+  transition: background-color 0.3s ease; /* Add a smooth transition effect */
+}
+
+.delete-btn:hover,
+.edit-btn:hover {
+  background-color: orange;
+  color: white; /* Set text color on hover to ensure visibility */
+}
+
+/* Ensure the Link component inherits the button styles */
+a.button {
+  text-decoration: none;
+}
+
+a.delete-btn {
+  background-color: black;
+  color: white;
+}
+
+a.edit-btn {
+  background-color: black;
+  color: white;
+}
+
+a.delete-btn:hover,
+a.edit-btn:hover {
+  background-color:  #FF4400;
+  color: white;
+}
+
+
