@@ -14,6 +14,7 @@ export default function Details() {
   const [product, setProduct] = useState({});
   const [comments, dispatch] = useReducer(reducer, []);
   const { productId } = useParams();
+  const navigate = useNavigate();
 
   useEffect(() => {
     productService.getOne(productId).then(setProduct);
@@ -42,19 +43,20 @@ export default function Details() {
     values.commentText = "";
   };
 
-  const initialValues = useMemo(
-    () => ({
-      commentText: "",
-    }),
-    []
-  );
+  const deleteButtonClickHandler = async () => {
+    const hasConfirmed = confirm(
+      `Are you sure you want to delete ${product.name}`
+    );
 
-  const { values, onChange, onSubmit } = useForm(
-    addCommentHandler,
-    initialValues
-  );
+    if (hasConfirmed) {
+      await productService.remove(productId);
+      navigate(Path.Products);
+    }
+  };
 
-  
+  const { values, onChange, onSubmit } = useForm(addCommentHandler, {
+    commentText: "",
+  });
 
   return (
     <main>
@@ -78,12 +80,12 @@ export default function Details() {
                   >
                     Edit
                   </Link>
-                  <Link
-                    to="/products/:productId/delete"
+                  <button
                     className="button delete-btn"
+                    onClick={deleteButtonClickHandler}
                   >
                     Delete
-                  </Link>
+                  </button>
                 </div>
               )}
             </div>

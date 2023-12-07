@@ -8,7 +8,7 @@ export const create = async (productData) => {
   return result;
 };
 
-export const edit = async (productId,productData) => {
+export const edit = async (productId, productData) => {
   const result = await request.put(`${baseUrl}/${productId}`, productData);
 
   return result;
@@ -24,4 +24,8 @@ export const getOne = async (productId) => {
   const result = await request.get(`${baseUrl}/${productId}`);
 
   return result;
+};
+
+export const remove = async (productId) => {
+  request.remove(`${baseUrl}/${productId}`);
 };
