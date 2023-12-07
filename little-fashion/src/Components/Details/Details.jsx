@@ -54,6 +54,8 @@ export default function Details() {
     initialValues
   );
 
+  
+
   return (
     <main>
       <section className="product-detail section-padding">

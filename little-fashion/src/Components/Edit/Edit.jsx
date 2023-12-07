@@ -24,7 +24,7 @@ export default function Edit() {
     try {
       await productService.edit(productId,values);
 
-      navigate("/products");
+      navigate(`/products/${productId}`);
     } catch (error) {
       //Error notification
       console.log(error);
@@ -132,7 +132,6 @@ export default function Edit() {
                   placeholder="description"
                   required=""
                   style={{ height: 160 }}
-                  defaultValue={""}
                   onChange={onChange}
                   value={values.description}
                 />

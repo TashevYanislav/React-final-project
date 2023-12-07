@@ -16,36 +16,39 @@ import Details from "./Components/Details/Details";
 import AboutUs from "./Components/aboutUs/aboutUs";
 import Logout from "./Components/Logout/Logout";
 import Edit from "./Components/Edit/Edit";
+import ErrorBoundary from "./Components/ErrorBaundary";
 
 function App() {
   return (
-    <AuthProvider>
-      <div>
-        <section className="preloader">
-          <div className="spinner">
-            <span className="sk-inner-circle" />
-          </div>
-        </section>
-        <main>
-          <NavigationBar />
-          <Routes>
-            <Route path={Path.Home} element={<Home />} />
-            <Route path={Path.About} element={<AboutUs />} />
-            <Route path={Path.Products} element={<Products />} />
-            <Route path={Path.Create} element={<Create />} />
-            <Route path={Path.Faq} element={<Faq />} />
-            <Route path={Path.Contact} element={<Contact />} />
-            <Route path={Path.Register} element={<Register />} />
-            <Route path={Path.Login} element={<Login />} />
-            <Route path={Path.Logout} element={<Logout />} />
-            <Route path={Path.Details} element={<Details />} />
-            <Route path={Path.Edit} element={<Edit />} />
-            {/* <Route path="*" element={<ErrorPage/>}/> */}
-          </Routes>
-        </main>
-        <Footer />
-      </div>
-    </AuthProvider>
+    <ErrorBoundary>
+      <AuthProvider>
+        <div>
+          <section className="preloader">
+            <div className="spinner">
+              <span className="sk-inner-circle" />
+            </div>
+          </section>
+          <main>
+            <NavigationBar />
+            <Routes>
+              <Route path={Path.Home} element={<Home />} />
+              <Route path={Path.About} element={<AboutUs />} />
+              <Route path={Path.Products} element={<Products />} />
+              <Route path={Path.Create} element={<Create />} />
+              <Route path={Path.Faq} element={<Faq />} />
+              <Route path={Path.Contact} element={<Contact />} />
+              <Route path={Path.Register} element={<Register />} />
+              <Route path={Path.Login} element={<Login />} />
+              <Route path={Path.Logout} element={<Logout />} />
+              <Route path={Path.Details} element={<Details />} />
+              <Route path={Path.Edit} element={<Edit />} />
+              {/* <Route path="*" element={<ErrorPage/>}/> */}
+            </Routes>
+          </main>
+          <Footer />
+        </div>
+      </AuthProvider>
+    </ErrorBoundary>
   );
 }
 
