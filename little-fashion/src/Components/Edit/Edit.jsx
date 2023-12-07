@@ -1,6 +1,5 @@
 import { useNavigate, useParams } from "react-router-dom";
 import * as productService from "../../services/productService";
-import useForm from "../../hooks/useForm";
 import { useEffect, useState } from "react";
 
 export default function Edit() {
@@ -20,9 +19,12 @@ export default function Edit() {
     productService.getOne(productId).then((result) => setProduct(result));
   }, [productId]);
 
-  const editProductHandler = async (values) => {
+  const editProductHandler = async (e) => {
+    e.preventDefault();
+
+    const values = Object.fromEntries(new FormData(e.currentTarget));
     try {
-      await productService.edit(productId,values);
+      await productService.edit(productId, values);
 
       navigate(`/products/${productId}`);
     } catch (error) {
@@ -31,7 +33,12 @@ export default function Edit() {
     }
   };
 
-  const { values, onChange, onSubmit } = useForm(editProductHandler, product);
+  const onChange = (e) => {
+    setProduct((state) => ({
+      ...state,
+      [e.target.name]: e.target.value,
+    }));
+  };
 
   return (
     <section className="contact section-padding">
@@ -44,7 +51,7 @@ export default function Edit() {
             <form
               className="contact-form me-lg-5 pe-lg-3"
               role="form"
-              onSubmit={onSubmit}
+              onSubmit={editProductHandler}
             >
               <div className="form-floating">
                 <input
@@ -54,8 +61,8 @@ export default function Edit() {
                   className="form-control"
                   placeholder="Product name"
                   required=""
+                  value={product.name}
                   onChange={onChange}
-                  value={values.name}
                 />
                 <label htmlFor="name">Product name</label>
               </div>
@@ -67,8 +74,8 @@ export default function Edit() {
                   className="form-control"
                   placeholder="Category"
                   required=""
+                  value={product.category}
                   onChange={onChange}
-                  value={values.category}
                 />
                 <label htmlFor="category">Category</label>
               </div>
@@ -80,8 +87,8 @@ export default function Edit() {
                   className="form-control"
                   placeholder="Brand name"
                   required=""
+                  value={product.brand}
                   onChange={onChange}
-                  value={values.brand}
                 />
                 <label htmlFor="brand">Brand name</label>
               </div>
@@ -93,8 +100,8 @@ export default function Edit() {
                   className="form-control"
                   placeholder="Materials"
                   required=""
+                  value={product.materials}
                   onChange={onChange}
-                  value={values.materials}
                 />
                 <label htmlFor="materials">Materials</label>
               </div>
@@ -106,8 +113,8 @@ export default function Edit() {
                   className="form-control"
                   placeholder="Price"
                   required=""
+                  value={product.price}
                   onChange={onChange}
-                  value={values.price}
                 />
                 <label htmlFor="price">Product price</label>
               </div>
@@ -119,8 +126,8 @@ export default function Edit() {
                   className="form-control"
                   placeholder="imageUrl"
                   required=""
+                  value={product.imageUrl}
                   onChange={onChange}
-                  value={values.imageUrl}
                 />
                 <label htmlFor="imageUrl">Image Url</label>
               </div>
@@ -132,8 +139,8 @@ export default function Edit() {
                   placeholder="description"
                   required=""
                   style={{ height: 160 }}
+                  value={product.description}
                   onChange={onChange}
-                  value={values.description}
                 />
                 <label htmlFor="description">
                   Tell us about the product...

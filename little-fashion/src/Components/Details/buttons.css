@@ -21,7 +21,7 @@
 
 .delete-btn:hover,
 .edit-btn:hover {
-  background-color: orange;
+  background-color: #FF4400;
   color: white; /* Set text color on hover to ensure visibility */
 }
 
