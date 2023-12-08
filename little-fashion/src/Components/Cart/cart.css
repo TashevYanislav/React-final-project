@@ -1,0 +1,86 @@
+.cart {
+  margin: 60px;
+  padding: 20px;
+  background-color: #f8f9fa;
+  border: #ccc;
+  border-radius: 5px;
+}
+
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.total {
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.checkout-button {
+  background-color: black;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.checkout-button:hover {
+  background-color: #ff4400;
+}
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: #fff;
+}
+
+.item-image {
+  width: 50px; /* Adjust the width as needed */
+  height: 50px; /* Adjust the height as needed */
+  margin-right: 10px;
+  border-radius: 3px;
+}
+
+.item-details {
+  flex: 1;
+}
+
+.item-name {
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+.item-price {
+  font-size: 14px;
+  color: #888;
+}
+
+.cart-item-btn {
+    padding: 5px 10px;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .cart-item-btn:hover {
+    background-color: #FF4400; /* Orange color on hover */
+  }
+
+
+.pad {
+  margin-top: 80px;
+  margin-bottom: 40px;
+  margin-left: 30px;
+  margin-right: 30px;
+}
