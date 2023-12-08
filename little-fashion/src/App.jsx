@@ -2,6 +2,8 @@ import { Routes, Route } from "react-router-dom";
 
 import Path from "./paths";
 import { AuthProvider } from "./contexts/authContext";
+import ErrorBoundary from "./Components/ErrorBaundary";
+import AuthGuard from "./Components/Guards/authGuard";
 
 import Home from "./Components/home/Home";
 import Footer from "./Components/Footer/Footer";
@@ -16,8 +18,7 @@ import Details from "./Components/Details/Details";
 import AboutUs from "./Components/aboutUs/aboutUs";
 import Logout from "./Components/Logout/Logout";
 import Edit from "./Components/Edit/Edit";
-import ErrorBoundary from "./Components/ErrorBaundary";
-import AuthGuard from "./Components/Guards/authGuard";
+import Cart from "./Components/Cart/Cart";
 
 function App() {
   return (
@@ -40,12 +41,11 @@ function App() {
               <Route path={Path.Register} element={<Register />} />
               <Route path={Path.Login} element={<Login />} />
               <Route path={Path.Details} element={<Details />} />
-              {/* <Route path="*" element={<ErrorPage/>}/> */}
-
               <Route element={<AuthGuard />}>
                 <Route path={Path.Create} element={<Create />} />
                 <Route path={Path.Logout} element={<Logout />} />
                 <Route path={Path.Edit} element={<Edit />} />
+                <Route path={Path.Cart} element={<Cart />} />
               </Route>
             </Routes>
           </main>
