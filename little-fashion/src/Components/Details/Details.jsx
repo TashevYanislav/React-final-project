@@ -10,14 +10,12 @@ import * as cartItemService from "../../services/cartItemService";
 
 import "./buttons.css";
 
-let counter = 0;
 export default function Details() {
   const { usermail, userId, isAuthenticated } = useContext(AuthContext);
   const [product, setProduct] = useState({});
   const [comments, dispatch] = useReducer(reducer, []);
   const { productId } = useParams();
   const navigate = useNavigate();
-  const [timesAdded, setAdded] = useState(0);
 
   useEffect(() => {
     productService.getOne(productId).then(setProduct);
@@ -37,8 +35,6 @@ export default function Details() {
       usermail
     );
 
-
-
     dispatch({
       type: "ADD_COMMENT",
       payload: newComment,
@@ -46,16 +42,17 @@ export default function Details() {
 
     values.commentText = "";
   };
+  const deleteCommentHandler = async (commentId) => {
+    await CommentService.remove(commentId);
+
+    dispatch({
+      type: "DELETE_COMMENT",
+      payload: commentId,
+    });
+  };
 
   const addCartItemHandler = async () => {
-    const newCartItem = await cartItemService.create(
-      product.name,
-      product.imageUrl,
-      product.price
-    );
-    counter++;
-    setAdded(counter);
-    console.log(newCartItem);
+    await cartItemService.create(product.name, product.imageUrl, product.price);
   };
 
   const deleteButtonClickHandler = async () => {
@@ -139,7 +136,6 @@ export default function Details() {
                     </button>
                   </div>
                 )}
-                {timesAdded > 0 && <p>{timesAdded} added to the Card</p>}
               </div>
               {isAuthenticated && (
                 <div className="product-cart-thumb row">
@@ -169,29 +165,32 @@ export default function Details() {
                   </article>
                 </div>
               )}
-              
-
-             
             </div>
           </div>
         </div>
-        
+
         <div>
           <h2 className="mb-4">
             Customer <span>Comments</span>
           </h2>
         </div>
-        {comments.map(({ _id, text, usermail}) => (
+        {comments.map(({ _id, text, usermail, _ownerId }) => (
           <div key={_id} className="slick-testimonial-caption">
             <p className="lead">{text}</p>
             <div className="slick-testimonial-client d-flex align-items-center mt-4">
               <span>{usermail}</span>
             </div>
+            {userId === _ownerId && (
+              <button
+                className="buttona delete-btn"
+                onClick={() => deleteCommentHandler(_id)}
+              >
+                Delete
+              </button>
+            )}
           </div>
         ))}
         {comments.length === 0 && <p>No comments yet...</p>}
-
-       
       </section>
       {/* <section className="related-product section-padding border-top">
         <div className="container">

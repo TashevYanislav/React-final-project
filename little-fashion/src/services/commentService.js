@@ -2,7 +2,7 @@ import * as request from "../lib/request";
 
 const baseUrl = "http://localhost:3030/data/comments";
 
-export const create = async (productId, text,usermail) => {
+export const create = async (productId, text, usermail) => {
   const newComment = await request.post(baseUrl, {
     productId,
     text,
@@ -20,4 +20,8 @@ export const getAll = async (productId) => {
   const result = await request.get(`${baseUrl}?${query}`);
 
   return result;
+};
+
+export const remove = async (productId) => {
+  request.remove(`${baseUrl}/${productId}`);
 };
