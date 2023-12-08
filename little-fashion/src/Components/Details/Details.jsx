@@ -1,4 +1,4 @@
-import { useContext, useEffect, useMemo, useReducer, useState } from "react";
+import { useContext, useEffect, useReducer, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import * as productService from "../../services/productService";
 import * as CommentService from "../../services/commentService";
@@ -6,6 +6,7 @@ import AuthContext from "../../contexts/authContext";
 import useForm from "../../hooks/useForm";
 import reducer from "./Commentreducer";
 import Path from "../../paths";
+import * as cartItemService from "../../services/cartItemService";
 
 import "./buttons.css";
 
@@ -41,6 +42,11 @@ export default function Details() {
     });
 
     values.commentText = "";
+  };
+
+  const addCartItemHandler = async () => {
+    const newCartItem = await cartItemService.create(product.name,product.imageUrl,product.price);
+    console.log(newCartItem);
   };
 
   const deleteButtonClickHandler = async () => {
@@ -123,7 +129,7 @@ export default function Details() {
                 </div> */}
                 {isAuthenticated && (
                   <div className="col-lg-6 col-12 mt-4 mt-lg-0">
-                    <button type="submit" className="btn custom-btn cart-btn">
+                    <button type="submit" className="btn custom-btn cart-btn" onClick={addCartItemHandler}>
                       Add to Cart
                     </button>
                   </div>

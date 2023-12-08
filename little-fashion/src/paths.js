@@ -9,6 +9,7 @@ const Path = {
   Register: "/register",
   Login: "/login",
   Details: "/products/:productId",
-  Edit: "/products/:productId/edit" 
+  Edit: "/products/:productId/edit",
+  Cart:"/cart"
 };
 export default Path;
