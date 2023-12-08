@@ -23,7 +23,7 @@ export const AuthProvider = ({ children }) => {
   const registerSubmitHandler = async (values) => {
     if (values.password === values.confirm_password) {
       const result = await authService.register(values.email, values.password);
-      console.log(result);
+
       setAuth(result);
       localStorage.setItem("accessToken", result.accessToken);
 
@@ -47,7 +47,7 @@ export const AuthProvider = ({ children }) => {
     registerSubmitHandler,
     logoutHandler,
     usermail: auth.email,
-    userId:auth._id,
+    userId: auth._id,
     isAuthenticated: !!auth.email,
   };
 

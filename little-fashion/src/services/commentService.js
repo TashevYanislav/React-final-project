@@ -2,10 +2,11 @@ import * as request from "../lib/request";
 
 const baseUrl = "http://localhost:3030/data/comments";
 
-export const create = async (productId, text) => {
+export const create = async (productId, text,usermail) => {
   const newComment = await request.post(baseUrl, {
     productId,
     text,
+    usermail,
   });
   console.log(newComment);
   return newComment;
@@ -20,4 +21,3 @@ export const getAll = async (productId) => {
 
   return result;
 };
-

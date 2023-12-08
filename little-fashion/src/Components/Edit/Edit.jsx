@@ -28,7 +28,7 @@ export default function Edit() {
 
       navigate(`/products/${productId}`);
     } catch (error) {
-      //Error notification
+      
       console.log(error);
     }
   };

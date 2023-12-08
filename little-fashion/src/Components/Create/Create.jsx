@@ -13,7 +13,6 @@ export default function Create() {
 
       navigate("/products");
     } catch (error) {
-      //Error notification
       console.log(error);
     }
   };

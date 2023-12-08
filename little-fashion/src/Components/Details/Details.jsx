@@ -10,12 +10,14 @@ import * as cartItemService from "../../services/cartItemService";
 
 import "./buttons.css";
 
+let counter = 0;
 export default function Details() {
-  const { email, userId, isAuthenticated } = useContext(AuthContext);
+  const { usermail, userId, isAuthenticated } = useContext(AuthContext);
   const [product, setProduct] = useState({});
   const [comments, dispatch] = useReducer(reducer, []);
   const { productId } = useParams();
   const navigate = useNavigate();
+  const [timesAdded, setAdded] = useState(0);
 
   useEffect(() => {
     productService.getOne(productId).then(setProduct);
@@ -31,10 +33,11 @@ export default function Details() {
   const addCommentHandler = async (values) => {
     const newComment = await CommentService.create(
       productId,
-      values.commentText
+      values.commentText,
+      usermail
     );
 
-    newComment.owner = { email };
+
 
     dispatch({
       type: "ADD_COMMENT",
@@ -45,7 +48,13 @@ export default function Details() {
   };
 
   const addCartItemHandler = async () => {
-    const newCartItem = await cartItemService.create(product.name,product.imageUrl,product.price);
+    const newCartItem = await cartItemService.create(
+      product.name,
+      product.imageUrl,
+      product.price
+    );
+    counter++;
+    setAdded(counter);
     console.log(newCartItem);
   };
 
@@ -71,6 +80,11 @@ export default function Details() {
           <div className="row">
             <div className="col-lg-6 col-12">
               <div className="product-thumb">
+                <div className="product-top d-flex">
+                  <span className="product-alert me-auto">
+                    {product.category}
+                  </span>
+                </div>
                 <img
                   src={product.imageUrl}
                   className="img-fluid product-image"
@@ -114,26 +128,18 @@ export default function Details() {
                 <p className="lead mb-5">{product.materials}</p>
               </div>
               <div className="product-cart-thumb row">
-                {/* <div className="col-lg-6 col-12">
-                  <select
-                    className="form-select cart-form-select"
-                    id="inputGroupSelect01"
-                  >
-                    <option selected="">Quantity</option>
-                    <option value={1}>1</option>
-                    <option value={2}>2</option>
-                    <option value={3}>3</option>
-                    <option value={4}>4</option>
-                    <option value={5}>5</option>
-                  </select>
-                </div> */}
                 {isAuthenticated && (
                   <div className="col-lg-6 col-12 mt-4 mt-lg-0">
-                    <button type="submit" className="btn custom-btn cart-btn" onClick={addCartItemHandler}>
+                    <button
+                      type="submit"
+                      className="btn custom-btn cart-btn"
+                      onClick={addCartItemHandler}
+                    >
                       Add to Cart
                     </button>
                   </div>
                 )}
+                {timesAdded > 0 && <p>{timesAdded} added to the Card</p>}
               </div>
               {isAuthenticated && (
                 <div className="product-cart-thumb row">
@@ -163,29 +169,29 @@ export default function Details() {
                   </article>
                 </div>
               )}
-              {/* Add Comment */}
+              
 
-              {/* Add Comment */}
+             
             </div>
           </div>
         </div>
-        {/* All Comments */}
+        
         <div>
           <h2 className="mb-4">
             Customer <span>Comments</span>
           </h2>
         </div>
-        {comments.map(({ _id, text, owner: { email } }) => (
+        {comments.map(({ _id, text, usermail}) => (
           <div key={_id} className="slick-testimonial-caption">
             <p className="lead">{text}</p>
             <div className="slick-testimonial-client d-flex align-items-center mt-4">
-              <span>{email}</span>
+              <span>{usermail}</span>
             </div>
           </div>
         ))}
         {comments.length === 0 && <p>No comments yet...</p>}
 
-        {/* All Comments */}
+       
       </section>
       {/* <section className="related-product section-padding border-top">
         <div className="container">

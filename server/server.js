@@ -1452,7 +1452,7 @@
         name: "Brown Bucket Hat",
         category: "Hats",
         brand: "J$M",
-        materials: "100% child laber",
+        materials: "100% polyester",
         price: "24",
         imageUrl:
           "https://assets.hermes.com/is/image/hermesproduct/fred-bucket-hat--231078N%204E-worn-1-0-0-800-800_g.jpg",
@@ -1462,7 +1462,7 @@
       },
       "6a11e778-2892-41d3-8c57-d717fe08cd45": {
         _ownerId: "847ec027-f659-4086-8032-5173e2f9c93a",
-        name: "Crop Top T-shirt",
+        name: "Man Black T-shirt",
         category: "T-shirts",
         brand: "Antisocial",
         materials: "100 % Cotton",
@@ -1480,7 +1480,7 @@
         materials: "100 % Polyester",
         price: "44",
         imageUrl:
-          "https://eg.jumia.is/unsafe/fit-in/500x500/filters:fill(white)/product/87/532532/1.jpg?6375",
+          "https://ae01.alicdn.com/kf/S7d7ca538b21e4bfd9ecb4556fb9783f5j/AOGZ-Hip-Hop-Techwear-Cargo-Pants-Men-Streetwear-Harajuku-Tactical-Pants-Trousers-Jogging-Pants-Loose-Casual.jpg",
         description: "Style and freedom with our new streetwear pants.",
         _createdOn: 1701715889183,
       },

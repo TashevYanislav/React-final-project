@@ -16,7 +16,6 @@ export default function ProductListItem({
         </Link>
         <div className="product-top d-flex">
           <span className="product-alert me-auto">{category}</span>
-          <Link to="*" className="bi-heart-fill product-icon" />
         </div>
         <div className="product-info d-flex">
           <div>

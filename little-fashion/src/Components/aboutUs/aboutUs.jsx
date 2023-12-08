@@ -37,7 +37,7 @@ export default function AboutUs() {
                   <div className="team-info">
                     <h5 className="mb-0">Don</h5>
                     <strong className="text-muted">Product, VP</strong>
-                    {/* Button trigger modal */}
+                    
                     <button
                       type="button"
                       className="btn custom-modal-btn"
@@ -59,7 +59,7 @@ export default function AboutUs() {
                   <div className="team-info">
                     <h5 className="mb-0">Kelly</h5>
                     <strong className="text-muted">Marketing</strong>
-                    {/* Button trigger modal */}
+                    
                     <button
                       type="button"
                       className="btn custom-modal-btn"
@@ -81,7 +81,7 @@ export default function AboutUs() {
                   <div className="team-info">
                     <h5 className="mb-0">Marie</h5>
                     <strong className="text-muted">Founder</strong>
-                    {/* Button trigger modal */}
+                    
                     <button
                       type="button"
                       className="btn custom-modal-btn"
@@ -188,7 +188,7 @@ export default function AboutUs() {
           </div>
         </section>
       </main>
-      {/* TEAM MEMBER MODAL */}
+     
       <div
         className="modal fade"
         id="don"
@@ -248,7 +248,7 @@ export default function AboutUs() {
           </div>
         </div>
       </div>
-      {/* TEAM MEMBER MODAL */}
+     
       <div
         className="modal fade"
         id="kelly"
@@ -305,7 +305,7 @@ export default function AboutUs() {
           </div>
         </div>
       </div>
-      {/* TEAM MEMBER MODAL */}
+   
       <div
         className="modal fade"
         id="marie"
