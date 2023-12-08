@@ -46,7 +46,7 @@ export default function Edit() {
         <div className="row">
           <div className="col-lg-6 col-12">
             <h2 className="mb-4">
-              Let's <span>create</span>
+              Let's <span>Edit</span>
             </h2>
             <form
               className="contact-form me-lg-5 pe-lg-3"
@@ -149,7 +149,7 @@ export default function Edit() {
 
               <div className="col-lg-5 col-6">
                 <button type="submit" className="form-control">
-                  Create
+                  Edit
                 </button>
               </div>
             </form>

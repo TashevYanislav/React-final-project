@@ -7,15 +7,17 @@ export const create = async (productId, text) => {
     productId,
     text,
   });
+  console.log(newComment);
   return newComment;
 };
 
 export const getAll = async (productId) => {
   const query = new URLSearchParams({
     where: `productId="${productId}"`,
-    load:`owner=_ownerId:users`
+    load: `owner=_ownerId:users`,
   });
   const result = await request.get(`${baseUrl}?${query}`);
 
   return result;
 };
+

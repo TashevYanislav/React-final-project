@@ -8,7 +8,7 @@ export default function FeaturedProducts() {
 
   useEffect(() => {
     productService.getLatest().then((result) => setLatestProducts(result));
-  },[]);
+  }, []);
 
   return (
     <section className="featured-product section-padding">
@@ -19,7 +19,7 @@ export default function FeaturedProducts() {
           </div>
 
           {latestProducts.map((product) => (
-            <LatestProduct {...product} />
+            <LatestProduct key={product._id} {...product} />
           ))}
           {!latestProducts.length && <h2 className="mb-5">Latest Products</h2>}
 

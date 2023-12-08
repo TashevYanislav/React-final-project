@@ -9,7 +9,7 @@ export default function LatestProduct({
   price,
 }) {
   return (
-    <div className="col-lg-4 col-12 mb-3">
+    <div className="col-lg-4 col-12 mb-3" >
       <div className="product-thumb">
         <Link to={`/products/${_id}`}>
           <img src={imageUrl} className="img-fluid product-image" alt={name} />

@@ -26,14 +26,13 @@ const request = async (method, url, data) => {
     method,
   });
   if (response.status === 204) {
-    console.log("Request successful with 204 status");
+    
     return {};
   }
   if (!response.ok) {
     throw result;
   }
   const result = await response.json();
-  console.log("Success");
   return result;
 };
 
