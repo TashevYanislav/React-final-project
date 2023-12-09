@@ -43,8 +43,8 @@
 }
 
 .item-image {
-  width: 50px; 
-  height: 50px; 
+  width: 50px;
+  height: 50px;
   margin-right: 10px;
   border-radius: 3px;
 }
@@ -64,19 +64,18 @@
 }
 
 .cart-item-btn {
-    padding: 5px 10px;
-    background-color: black;
-    color: white;
-    border: none;
-    border-radius: 3px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .cart-item-btn:hover {
-    background-color: #FF4400; /* Orange color on hover */
-  }
+  padding: 5px 10px;
+  background-color: black;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
 
+.cart-item-btn:hover {
+  background-color: #ff4400;
+}
 
 .pad {
   margin-top: 80px;
