@@ -65,3 +65,10 @@ a.edit-btn:hover {
 }
 
 
+.likes-p{
+  font-size: 17px; 
+  margin-left: 10px;
+}
+.bi-heart-fill.liked {
+  color: red; /* Change to your desired color */
+}
