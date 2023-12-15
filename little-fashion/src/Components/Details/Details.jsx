@@ -7,14 +7,20 @@ import useForm from "../../hooks/useForm";
 import reducer from "./Commentreducer";
 import Path from "../../paths";
 import * as cartItemService from "../../services/cartItemService";
+import * as LikeService from "../../services/likesService";
 
 import "./buttons.css";
-
+let currentLike = null;
 export default function Details() {
   const { usermail, userId, isAuthenticated } = useContext(AuthContext);
   const [product, setProduct] = useState({});
   const [comments, dispatch] = useReducer(reducer, []);
+  const [likes, setLikes] = useState([]);
   const { productId } = useParams();
+  const [isLiked, setIsLiked] = useState(() => {
+    const storedIsLiked = localStorage.getItem(`isLiked_${productId}`);
+    return storedIsLiked ? JSON.parse(storedIsLiked) : false;
+  });
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -26,7 +32,10 @@ export default function Details() {
         payload: result,
       });
     });
-  }, [productId]);
+
+    LikeService.getAll(productId).then(setLikes);
+    localStorage.setItem(`isLiked_${productId}`, JSON.stringify(isLiked));
+  }, [isLiked.length, productId]);
 
   const addCommentHandler = async (values) => {
     const newComment = await CommentService.create(
@@ -66,6 +75,25 @@ export default function Details() {
     }
   };
 
+  const onLike = async () => {
+    if (isLiked === false) {
+      const newLike = await LikeService.create(productId, usermail);
+      console.log(newLike);
+      setLikes([...likes, newLike]);
+      setIsLiked(true);
+      currentLike = newLike;
+      console.log(currentLike);
+      return newLike;
+    } else {
+      console.log(currentLike);
+      LikeService.remove(currentLike._id);
+      const updatedLikes = likes.filter((like) => like._id !== currentLike._id);
+      setLikes(updatedLikes);
+      setIsLiked(false);
+      currentLike = null;
+    }
+  };
+
   const { values, onChange, onSubmit } = useForm(addCommentHandler, {
     commentText: "",
   });
@@ -81,6 +109,16 @@ export default function Details() {
                   <span className="product-alert me-auto">
                     {product.category}
                   </span>
+                  {isAuthenticated && (
+                    <div>
+                      <a
+                        type="submit"
+                        onClick={onLike}
+                        className={`bi-heart-fill ${isLiked ? "liked" : ""}`}
+                      ></a>
+                    </div>
+                  )}
+                  <p className="likes-p">{likes.length}</p>
                 </div>
                 <img
                   src={product.imageUrl}
