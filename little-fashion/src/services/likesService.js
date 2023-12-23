@@ -20,3 +20,11 @@ export const getAll = async (productId) => {
 export const remove = async (productId) => {
   request.remove(`${baseUrl}/${productId}`);
 };
+
+export const update = async (userId, isLiked) => {
+  const result = await request.put(`/data/users/${userId}`, {
+    isLiked,
+  });
+  console.log(result);
+  return result;
+};

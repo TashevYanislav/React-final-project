@@ -16,11 +16,8 @@ export default function Details() {
   const [product, setProduct] = useState({});
   const [comments, dispatch] = useReducer(reducer, []);
   const [likes, setLikes] = useState([]);
+  const [isLiked, setIsLiked] = useState(false);
   const { productId } = useParams();
-  const [isLiked, setIsLiked] = useState(() => {
-    const storedIsLiked = localStorage.getItem(`isLiked_${productId}`);
-    return storedIsLiked ? JSON.parse(storedIsLiked) : false;
-  });
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -33,9 +30,8 @@ export default function Details() {
       });
     });
 
-    LikeService.getAll(productId).then(setLikes);
-    localStorage.setItem(`isLiked_${productId}`, JSON.stringify(isLiked));
-  }, [isLiked.length, productId]);
+    LikeService.getAll(productId).then(...[setLikes]);
+  }, [productId]);
 
   const addCommentHandler = async (values) => {
     const newComment = await CommentService.create(
@@ -76,13 +72,15 @@ export default function Details() {
   };
 
   const onLike = async () => {
-    if (isLiked === false) {
+    if (!likes.some((like) => like._ownerId === userId)) {
       const newLike = await LikeService.create(productId, usermail);
       console.log(newLike);
       setLikes([...likes, newLike]);
       setIsLiked(true);
+
       currentLike = newLike;
-      console.log(currentLike);
+      // console.log(newLike);
+      console.log(likes);
       return newLike;
     } else {
       console.log(currentLike);
@@ -114,7 +112,11 @@ export default function Details() {
                       <a
                         type="submit"
                         onClick={onLike}
-                        className={`bi-heart-fill ${isLiked ? "liked" : ""}`}
+                        className={`bi-heart-fill ${
+                          likes.some((like) => like._ownerId === userId)
+                            ? "liked"
+                            : ""
+                        }`}
                       ></a>
                     </div>
                   )}
