@@ -16,7 +16,6 @@ export default function Details() {
   const [product, setProduct] = useState({});
   const [comments, dispatch] = useReducer(reducer, []);
   const [likes, setLikes] = useState([]);
-  const [isLiked, setIsLiked] = useState(false);
   const { productId } = useParams();
   const navigate = useNavigate();
 
@@ -47,6 +46,7 @@ export default function Details() {
 
     values.commentText = "";
   };
+
   const deleteCommentHandler = async (commentId) => {
     await CommentService.remove(commentId);
 
@@ -76,18 +76,16 @@ export default function Details() {
       const newLike = await LikeService.create(productId, usermail);
       console.log(newLike);
       setLikes([...likes, newLike]);
-      setIsLiked(true);
 
       currentLike = newLike;
-      // console.log(newLike);
       console.log(likes);
+
       return newLike;
     } else {
       console.log(currentLike);
       LikeService.remove(currentLike._id);
       const updatedLikes = likes.filter((like) => like._id !== currentLike._id);
       setLikes(updatedLikes);
-      setIsLiked(false);
       currentLike = null;
     }
   };
