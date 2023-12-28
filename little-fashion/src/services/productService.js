@@ -37,13 +37,13 @@ export const getLatest = async () => {
   return result;
 };
 
-export const getSimilar = async (productCategory,productId) => {
+export const getSimilar = async (productCategory, productId) => {
   const targetCategory = `${productCategory}`;
-const encodedCategory = encodeURIComponent(targetCategory);
-
+  const encodedCategory = encodeURIComponent(targetCategory);
 
   const result = await request.get(
     `${baseUrl}?where=category%3D%22${encodedCategory}%22`
   );
-  return result
+  const similarProducts = result.filter((product) => product._id !== productId);
+  return similarProducts;
 };
