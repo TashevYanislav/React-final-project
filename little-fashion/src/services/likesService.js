@@ -21,10 +21,8 @@ export const remove = async (productId) => {
   request.remove(`${baseUrl}/${productId}`);
 };
 
-export const update = async (userId, isLiked) => {
-  const result = await request.put(`/data/:collection/${userId}`, {
-    isLiked,
-  });
+export const update = async (userId) => {
+  const result = await request.put(`${baseUrl}/${userId}`);
   console.log(result);
   return result;
 };

@@ -15,7 +15,8 @@ export default function Login() {
     [loginFormKeys.Email]: "",
     [loginFormKeys.Password]: "",
   });
-
+  let errors = {};
+  console.log(errors);
   return (
     <main>
       <section className="sign-in-form section-padding">
@@ -53,6 +54,7 @@ export default function Login() {
                       />
                       <label htmlFor="password">Password</label>
                     </div>
+
                     <button
                       type="submit"
                       className="btn custom-btn form-control mt-4 mb-3"

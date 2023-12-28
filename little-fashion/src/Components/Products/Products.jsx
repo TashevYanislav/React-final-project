@@ -36,41 +36,7 @@ export default function Products() {
 
 
 
-            <div className="col-12">
-              <h2 className="mb-5">Popular</h2>
-            </div>
-            <div className="col-lg-4 col-12 mb-3">
-              <div className="product-thumb">
-                <a href="product-detail.html">
-                  <img
-                    src="images/product/team-fredi-8HRKoay8VJE-unsplash.jpeg"
-                    className="img-fluid product-image"
-                    alt=""
-                  />
-                </a>
-                <div className="product-top d-flex">
-                  <span className="product-alert">Trending</span>
-                </div>
-                <div className="product-info d-flex">
-                  <div>
-                    <h5 className="product-title mb-0">
-                      <a
-                        href="product-detail.html"
-                        className="product-title-link"
-                      >
-                        Package
-                      </a>
-                    </h5>
-                    <p className="product-p">
-                      Original package design from house
-                    </p>
-                  </div>
-                  <small className="product-price text-muted ms-auto">
-                    $50
-                  </small>
-                </div>
-              </div>
-            </div>
+            
             
           </div>
         </div>

@@ -10,26 +10,41 @@ import * as cartItemService from "../../services/cartItemService";
 import * as LikeService from "../../services/likesService";
 
 import "./buttons.css";
+import LatestProduct from "../home/latestProduct/LatestProduct";
 let currentLike = null;
 export default function Details() {
   const { usermail, userId, isAuthenticated } = useContext(AuthContext);
   const [product, setProduct] = useState({});
   const [comments, dispatch] = useReducer(reducer, []);
   const [likes, setLikes] = useState([]);
+  const [similarProduct, setSimilar] = useState([]);
   const { productId } = useParams();
   const navigate = useNavigate();
 
   useEffect(() => {
-    productService.getOne(productId).then(setProduct);
+    const fetchData = async () => {
+      try {
+        const productData = await productService.getOne(productId);
+        setProduct(productData);
 
-    CommentService.getAll(productId).then((result) => {
-      dispatch({
-        type: "GET_ALL_COMMENTS",
-        payload: result,
-      });
-    });
+        productService
+          .getSimilar(productData.category, productId)
+          .then((res) => setSimilar(res));
 
-    LikeService.getAll(productId).then(...[setLikes]);
+        const commentResult = await CommentService.getAll(productId);
+        dispatch({
+          type: "GET_ALL_COMMENTS",
+          payload: commentResult,
+        });
+
+        const likeResult = await LikeService.getAll(productId);
+        setLikes(likeResult);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
   }, [productId]);
 
   const addCommentHandler = async (values) => {
@@ -46,7 +61,6 @@ export default function Details() {
 
     values.commentText = "";
   };
-
   const deleteCommentHandler = async (commentId) => {
     await CommentService.remove(commentId);
 
@@ -77,12 +91,12 @@ export default function Details() {
       console.log(newLike);
       setLikes([...likes, newLike]);
 
-      currentLike = newLike;
-      console.log(likes);
+      // LikeService.update(userId);
 
+      currentLike = newLike;
+      console.log(currentLike);
       return newLike;
     } else {
-      console.log(currentLike);
       LikeService.remove(currentLike._id);
       const updatedLikes = likes.filter((like) => like._id !== currentLike._id);
       setLikes(updatedLikes);
@@ -93,7 +107,7 @@ export default function Details() {
   const { values, onChange, onSubmit } = useForm(addCommentHandler, {
     commentText: "",
   });
-
+ 
   return (
     <main>
       <section className="product-detail section-padding">
@@ -207,132 +221,45 @@ export default function Details() {
           </div>
         </div>
 
-        <div>
-          <h2 className="mb-4">
-            Customer <span>Comments</span>
-          </h2>
-        </div>
-        {comments.map(({ _id, text, usermail, _ownerId }) => (
-          <div key={_id} className="slick-testimonial-caption">
-            <p className="lead">{text}</p>
-            <div className="slick-testimonial-client d-flex align-items-center mt-4">
-              <span>{usermail}</span>
+        <section className="related-product section-padding border-top">
+          <div className="container">
+            <div className="row">
+              <div className="col-12">
+                <h2 className="mb-4">
+                  Other items in that <span>Category</span>
+                </h2>
+              </div>
+
+              {similarProduct.map((product) => (
+                <LatestProduct key={product._id} {...product} />
+              ))}
+              {!similarProduct.length && <p>No similar products yet...</p>}
             </div>
-            {userId === _ownerId && (
-              <button
-                className="buttona delete-btn"
-                onClick={() => deleteCommentHandler(_id)}
-              >
-                Delete
-              </button>
-            )}
+            <div>
+              <h2 className="mb-4">
+                Customer <span>Comments</span>
+              </h2>
+            </div>
+            {comments.map(({ _id, text, usermail, _ownerId }) => (
+              <div key={_id} className="slick-testimonial-caption">
+                <p className="lead">{text}</p>
+                <div className="slick-testimonial-client d-flex align-items-center mt-4">
+                  <span>{usermail}</span>
+                </div>
+                {userId === _ownerId && (
+                  <button
+                    className="buttona delete-btn"
+                    onClick={() => deleteCommentHandler(_id)}
+                  >
+                    Delete
+                  </button>
+                )}
+              </div>
+            ))}
+            {comments.length === 0 && <p>No comments yet...</p>}
           </div>
-        ))}
-        {comments.length === 0 && <p>No comments yet...</p>}
+        </section>
       </section>
-      {/* <section className="related-product section-padding border-top">
-        <div className="container">
-          <div className="row">
-            <div className="col-12">
-              <h3 className="mb-5">You might also like</h3>
-            </div>
-            <div className="col-lg-4 col-12 mb-3">
-              <div className="product-thumb">
-                <a href="product-detail.html">
-                  <img
-                    src="images/product/evan-mcdougall-qnh1odlqOmk-unsplash.jpeg"
-                    className="img-fluid product-image"
-                    alt=""
-                  />
-                </a>
-                <div className="product-top d-flex">
-                  <span className="product-alert me-auto">New arrival</span>
-                  <a href="#" className="bi-heart-fill product-icon" />
-                </div>
-                <div className="product-info d-flex">
-                  <div>
-                    <h5 className="product-title mb-0">
-                      <a
-                        href="product-detail.html"
-                        className="product-title-link"
-                      >
-                        Tree pot
-                      </a>
-                    </h5>
-                    <p className="product-p">
-                      Original package design from house
-                    </p>
-                  </div>
-                  <small className="product-price text-muted ms-auto mt-auto mb-5">
-                    $25
-                  </small>
-                </div>
-              </div>
-            </div>
-            <div className="col-lg-4 col-12 mb-3">
-              <div className="product-thumb">
-                <a href="product-detail.html">
-                  <img
-                    src="images/product/jordan-nix-CkCUvwMXAac-unsplash.jpeg"
-                    className="img-fluid product-image"
-                    alt=""
-                  />
-                </a>
-                <div className="product-top d-flex">
-                  <span className="product-alert">Low Price</span>
-                  <a href="#" className="bi-heart-fill product-icon ms-auto" />
-                </div>
-                <div className="product-info d-flex">
-                  <div>
-                    <h5 className="product-title mb-0">
-                      <a
-                        href="product-detail.html"
-                        className="product-title-link"
-                      >
-                        Fashion set
-                      </a>
-                    </h5>
-                    <p className="product-p">Costume package</p>
-                  </div>
-                  <small className="product-price text-muted ms-auto mt-auto mb-5">
-                    $35
-                  </small>
-                </div>
-              </div>
-            </div>
-            <div className="col-lg-4 col-12">
-              <div className="product-thumb">
-                <a href="product-detail.html">
-                  <img
-                    src="images/product/nature-zen-3Dn1BZZv3m8-unsplash.jpeg"
-                    className="img-fluid product-image"
-                    alt=""
-                  />
-                </a>
-                <div className="product-top d-flex">
-                  <a href="#" className="bi-heart-fill product-icon ms-auto" />
-                </div>
-                <div className="product-info d-flex">
-                  <div>
-                    <h5 className="product-title mb-0">
-                      <a
-                        href="product-detail.html"
-                        className="product-title-link"
-                      >
-                        Juice Drinks
-                      </a>
-                    </h5>
-                    <p className="product-p">Nature made another world</p>
-                  </div>
-                  <small className="product-price text-muted ms-auto mt-auto mb-5">
-                    $45
-                  </small>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section> */}
     </main>
   );
 }

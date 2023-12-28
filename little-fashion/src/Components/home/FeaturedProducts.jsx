@@ -21,7 +21,7 @@ export default function FeaturedProducts() {
           {latestProducts.map((product) => (
             <LatestProduct key={product._id} {...product} />
           ))}
-          {!latestProducts.length && <h2 className="mb-5">Latest Products</h2>}
+          {!latestProducts.length && <h2 className="mb-5">No Latest Products</h2>}
 
           <div className="col-12 text-center">
             <Link to="/products" className="view-all">
