@@ -1455,7 +1455,7 @@
         materials: "100% polyester",
         price: "24",
         imageUrl:
-          "https://assets.hermes.com/is/image/hermesproduct/fred-bucket-hat--231078N%204E-worn-1-0-0-800-800_g.jpg",
+          "https://www.gigipip.com/cdn/shop/products/bucket-hat-55-xs-brown-rylee-bucket-hat-brown-28304907403395_995x.jpg?v=1671645013",
         description:
           "If you want something special to treat yourself for the summer , try our bucket hats!",
         _createdOn: 1701714642060,
@@ -1515,7 +1515,7 @@
         materials: "100% Stainless Steel",
         price: "23",
         imageUrl:
-          "https://m.media-amazon.com/images/W/MEDIAX_792452-T2/images/I/616ml7p229L._AC_UY1000_.jpg",
+          "https://doviana.us/cdn/shop/products/SpikeHoopEarrings_Doviana_Silver_1024x1024.jpg?v=1691343247",
         description: "Handmade jewelry for your man .",
         _createdOn: 1703583847418,
         _ownerId: "01519593-ccc3-4a98-9ee2-474d1206c0e3",
