@@ -1460,6 +1460,7 @@
           "If you want something special to treat yourself for the summer , try our bucket hats!",
         _createdOn: 1701714642060,
       },
+
       "6a11e778-2892-41d3-8c57-d717fe08cd45": {
         _ownerId: "847ec027-f659-4086-8032-5173e2f9c93a",
         name: "Man Black T-shirt",
@@ -1471,6 +1472,20 @@
           "https://shop.after.life/cdn/shop/files/079A7481_square_530x@2x.jpg?v=1684770270",
         description: "The best party crop top t-shirt you will see today!",
         _createdOn: 1701715668941,
+      },
+      "d4f8b69c-6d23-4e8c-9a7d-7a9f9692c4e3": {
+        name: "Silver Hoop Earrings",
+        category: "Earings",
+        brand: "ShinyLoops",
+        materials: "925 Sterling Silver",
+        price: "35",
+        imageUrl:
+          "https://m.media-amazon.com/images/I/61lpxom-xkL._AC_UY1000_.jpg",
+        description:
+          "Versatile and chic, our silver hoop earrings are perfect for everyday wear.",
+        _createdOn: 1703586847418,
+        _ownerId: "04859614-fff6-4b66-8c6d-7b9f2157e5d5",
+        _updatedOn: 1703586948955,
       },
       "07cc60ae-3cc6-4d79-8151-76eed043d79e": {
         _ownerId: "01519593-ccc3-4a98-9ee2-474d1206c0e3",
@@ -1496,6 +1511,34 @@
         description: "Redefine urban fashion with our trendy all-black shoes.",
         _createdOn: 1703583323700,
       },
+      "f3a89f70-7d23-44b5-8a2d-713b547f4a3b": {
+        _ownerId: "45d62e17-9d23-47c7-8b0d-dbc4e362be10",
+        name: "Blue Denim Bucket Hat",
+        category: "Hats",
+        brand: "UrbanStyle",
+        materials: "100% cotton",
+        price: "30",
+        imageUrl:
+          "https://img.mytheresa.com/1094/1238/100/jpeg/catalog/product/16/P00830639_b1.jpg",
+        description:
+          "Complete your casual look with our stylish blue denim bucket hat, perfect for any season!",
+        _createdOn: 1701715642060,
+      },
+      "a3e6f48b-7d45-4d8a-8f9b-6a9f8591b3c2": {
+        name: "Pearl Drop Earrings",
+        category: "Earings",
+        brand: "OceanPearls",
+        materials: "Sterling Silver, Freshwater Pearls",
+        price: "60",
+        imageUrl:
+          "https://www.lulus.com/images/product/xlarge/6803721_1389816.jpg?w=375&hdpi=1",
+        description:
+          "Classic and timeless, these pearl drop earrings are a staple for any jewelry collection.",
+        _createdOn: 1703585847418,
+        _ownerId: "03748503-eee5-4a77-8d6b-696e1046f3e4",
+        _updatedOn: 1703585948955,
+      },
+
       "321457b9-6392-40bc-856c-17b4198723c1": {
         _ownerId: "01519593-ccc3-4a98-9ee2-474d1206c0e3",
         name: "Panther Glasses - Gold / Black",
@@ -1507,6 +1550,19 @@
           "https://gvnmnt.com/cdn/shop/products/292A4614copy.jpg?v=1671195622&width=1946",
         description: "The stylish answer for your questions .",
         _createdOn: 1703583677176,
+      },
+      "a8b34e80-2d45-48f3-9a8c-2fb947f8c7b5": {
+        _ownerId: "65f82b89-8164-4628-8712-geb96383ce09",
+        name: "Green Camouflage Bucket Hat",
+        category: "Hats",
+        brand: "OutdoorGear",
+        materials: "100% polyester",
+        price: "28",
+        imageUrl:
+          "https://tbi.cdn.pacerace.de/media/images/org/5003CB_I01-00788.jpg",
+        description:
+          "Blend in with nature on your next adventure with our green camouflage bucket hat, designed for outdoor enthusiasts!",
+        _createdOn: 1701717642060,
       },
       "67e5e57b-9927-4438-8d6a-81084531149d": {
         name: "Spike Huggie Hoops Earrings",
@@ -1520,6 +1576,33 @@
         _createdOn: 1703583847418,
         _ownerId: "01519593-ccc3-4a98-9ee2-474d1206c0e3",
         _updatedOn: 1703583948955,
+      },
+      "c4d56a71-3c65-4d8e-9b0f-1bb947f8c7b4": {
+        _ownerId: "5b76e489-8163-4628-8712-feb96382bef8",
+        name: "Black Leather Bucket Hat",
+        category: "Hats",
+        brand: "LuxLeather",
+        materials: "100% leather",
+        price: "50",
+        imageUrl:
+          "https://law17.com/cdn/shop/products/Law17Ecomm_329-12bucket_1800x1800.jpg?v=1657230304",
+        description:
+          "Elevate your style with our luxurious black leather bucket hat, a must-have for fashion enthusiasts!",
+        _createdOn: 1701716642060,
+      },
+      "b2c4d57c-8d37-4b65-9a8f-5a9e7598a2d1": {
+        name: "Golden Star Stud Earrings",
+        category: "Earings",
+        brand: "ElegantGems",
+        materials: "24K Gold Plated",
+        price: "45",
+        imageUrl:
+          "https://cdn.notonthehighstreet.com/fs/e6/1e/2c19-689d-4f21-b3ab-4a4408aa3002/original_gold-vermeil-simple-star-stud-earrings.jpg",
+        description:
+          "Add a touch of elegance with our golden star stud earrings, perfect for any occasion.",
+        _createdOn: 1703584847418,
+        _ownerId: "02827392-ddd4-4a88-9ef3-585d1345d1f2",
+        _updatedOn: 1703584948955,
       },
     },
 
